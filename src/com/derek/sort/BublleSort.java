@@ -1,5 +1,7 @@
 package com.derek.sort;
 
+import com.derek.common.Exchange;
+
 /**
  * Created by Derek on 16/5/12.
  *
@@ -19,9 +21,7 @@ public class BublleSort {
             boolean exchange = true;
             for(int j=arr.length-1; j>i; j--){
                 if(arr[j] < arr[j-1]){
-                    int temp = arr[j];
-                    arr[j] = arr[j-1];
-                    arr[j-1] = temp;
+                    Exchange.swap(arr, j, j-1);
                     exchange = false;
                 }
             }

@@ -1,5 +1,7 @@
 package com.derek.sort;
 
+import com.derek.common.Exchange;
+
 /**
  * Created by Derek on 16/5/12.
  *
@@ -33,16 +35,11 @@ public class HeapSort {
         shiftHeap(arr, arr.length - 1);
 
         for(int i=arr.length-1;i>=0;i--){
-            int temp = arr[0];
-            arr[0] = arr[i];
-            arr[i] = temp;
-
-            shiftHeap(arr,i-1);
+            Exchange.swap(arr, 0, i);
+            shiftHeap(arr, i - 1);
         }
 
-        int temp = arr[0];
-        arr[0] = arr[1];
-        arr[1] = temp;
+        Exchange.swap(arr, 0, 1);
     }
 
     private static void shiftHeap(int arr[],int end){
@@ -56,15 +53,16 @@ public class HeapSort {
             }
 
             if(arr[dad]<arr[son]){
-                int temp = arr[dad];
-                arr[dad] = arr[son];
-                arr[son] = temp;
+                Exchange.swap(arr, dad, son);
             }
         }
 
     }
 
     /**
+     *
+     * 看到的别人的另外一种写法，感觉有些多余，难以理解，过段时间，试一下
+     *
      * arr[] 下标从 0 开始，所以，有如下规律：
      *          arr[leftChild] = arr[parent*2+1]
      *          arr[rightChild] = arr[paraent*2+2]
@@ -79,13 +77,7 @@ public class HeapSort {
             shiftDown(arr, i, len-1);
         }
 
-//        for(int i=len-1;i>=0;i--){
-//            int temp = arr[0];
-//            arr[0] = arr[i];
-//            arr[i] = temp;
-//
-//            shiftDown(arr,0,i-1);
-//        }
+
 
     }
 
@@ -98,9 +90,7 @@ public class HeapSort {
         }
 
         if(arr[dad]<arr[son]){
-            int temp = arr[dad];
-            arr[dad] = arr[son];
-            arr[son] = temp;
+            Exchange.swap(arr, dad, son);
         }
     }
 

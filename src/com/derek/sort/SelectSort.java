@@ -1,5 +1,7 @@
 package com.derek.sort;
 
+import com.derek.common.Exchange;
+
 /**
  * Created by Derek on 16/5/12.
  *
@@ -24,9 +26,7 @@ public class SelectSort {
                 }
             }
             if(min!=i){
-                int temp = arr[i];
-                arr[i]=arr[min];
-                arr[min]=temp;
+                Exchange.swap(arr, i, min);
             }
         }
     }

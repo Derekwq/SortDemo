@@ -1,5 +1,7 @@
 package com.derek.sort;
 
+import com.derek.common.Exchange;
+
 import java.util.Random;
 
 /**
@@ -71,9 +73,7 @@ public class QuickSort {
             if(arr[i]<pivot){
                 pivotpos++;
                 if(pivotpos!=i){
-                    int temp = arr[i];
-                    arr[i]=arr[pivotpos];
-                    arr[pivotpos]=temp;
+                    Exchange.swap(arr, i, pivotpos);
                 }
             }
         }
@@ -94,9 +94,7 @@ public class QuickSort {
         Random random = new Random();
         int gap = random.nextInt(right - left);
 
-        int temp = arr[gap];
-        arr[gap] = arr[left];
-        arr[left] = temp;
+        Exchange.swap(arr, gap, left);
 
         return partition(arr, left, right);
     }
